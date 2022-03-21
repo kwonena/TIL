@@ -2,10 +2,10 @@
 
 Record learned every day💡
 
---- Algorithms --- BOJ
-|
---- Javascript
-|
---- Python
-|
---- React
+```js
+root
+  └─ Algorithms
+  │   └─ BOJ
+  ├─ Javascript
+  ├─ React
+  └─ Python
