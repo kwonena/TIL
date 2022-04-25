@@ -6,7 +6,7 @@ JavaScript의 상태 관리 라이브러리이다. React뿐만 아니라 Vanilla
 
 # 💡 **Redux 설치 방법**
 
-```
+```js
 $ npm install redux
 $ yarn add redux
 ```
@@ -21,14 +21,14 @@ $ yarn add redux
 
 ### ✔ Store (스토어)
 
-```
+```js
 // store : date 저장 공간
 const countStore = createStore(countModifier);
 ```
 
 ### ✔ Action (액션)
 
-```
+```js
 // action : reducer와 소통하는 방식
 // action type을 변수화 시켜 오류를 쉽게 잡을 수 있게 만듦
 // 일반 string 타입은 JS가 오류를 잡지 못함
@@ -38,7 +38,7 @@ const MINUS = "MINUS";
 
 ### ✔ Reducer (리듀서)
 
-```
+```js
 // reducer : data 수정 함수
 // 데이터를 유일하게 수정할 수 있는 곳
 // 인자로 state 값과 action을 받음
@@ -60,14 +60,14 @@ const countModifier = (count = 0, action) => {
 
 ### ✔ getState()
 
-```
+```js
 // 현재 store의 상태를 출력함
 console.log(countStore.getState();)
 ```
 
 ### ✔ dispatch()
 
-```
+```js
 // dispatch : reducer에 action을 보내고 호출함
 const handleAdd = () => {
   countStore.dispatch({ type: ADD });
@@ -80,14 +80,14 @@ const handleMinus = () => {
 
 ### ✔ subscribe()
 
-```
+```js
 // subscribe : store의 변화를 감지하면 인자 값으로 준 함수를 실행
 countStore.subscribe(onChange);
 ```
 
 # 💡 **전체 코드**
 
-```
+```html
 <!-- 두 가지의 증감소 버튼을 통해 span의 값을 변경하는 프로그램 -->
 <body>
   <button id="add">Add</button>
@@ -96,7 +96,7 @@ countStore.subscribe(onChange);
 </body>
 ```
 
-```
+```js
 // createStore : store 생성 함수
 import { createStore } from "redux";
 
