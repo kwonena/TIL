@@ -172,6 +172,50 @@ export default connect(null, mapDispatchToProps)(ToDo);
   - mapDispatchToProps의 두번째 인자로 생략 가능
   - 컴포넌트가 현재 가지고 있는 모두 props를 보여줌
 
+### ✔ store.js
+
+```js
+// store.js
+import { createStore } from "redux";
+
+const ADD_TODO = "ADD_TODO";
+const DELETE_TODO = "DELETE_TODO";
+
+const addToDo = (text) => {
+  return {
+    type: ADD_TODO,
+    text,
+  };
+};
+
+const deleteToDo = (text) => {
+  return {
+    type: DELETE_TODO,
+    id: parseInt(id),
+  };
+};
+
+const reducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return [...state, { text: action.text, id: Date.now() }];
+    case DELETE_TODO:
+      return state.filter((toDo) => toDo.id !== action.id);
+    default:
+      return state;
+  }
+};
+
+const store = createStore(reducer);
+
+export const actionCreators = {
+  addToDo,
+  deleteToDo,
+};
+
+export default store;
+```
+
 # 💡 **전체 코드**
 
 ```js
@@ -312,4 +356,46 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 export default connect(null, mapDispatchToProps)(ToDo);
+```
+
+```js
+// store.js
+import { createStore } from "redux";
+
+const ADD_TODO = "ADD_TODO";
+const DELETE_TODO = "DELETE_TODO";
+
+const addToDo = (text) => {
+  return {
+    type: ADD_TODO,
+    text,
+  };
+};
+
+const deleteToDo = (text) => {
+  return {
+    type: DELETE_TODO,
+    id: parseInt(id),
+  };
+};
+
+const reducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return [...state, { text: action.text, id: Date.now() }];
+    case DELETE_TODO:
+      return state.filter((toDo) => toDo.id !== action.id);
+    default:
+      return state;
+  }
+};
+
+const store = createStore(reducer);
+
+export const actionCreators = {
+  addToDo,
+  deleteToDo,
+};
+
+export default store;
 ```
